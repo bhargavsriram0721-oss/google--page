@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Clone</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#fff;
+}
+
+/* Top Menu */
+.top-menu{
+    display:flex;
+    justify-content:flex-end;
+    padding:20px 30px;
+}
+
+.top-menu ul{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.top-menu a{
+    text-decoration:none;
+    color:#202124;
+    font-size:14px;
+}
+
+.signin{
+    background:#1a73e8;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* Three-line menu */
+.menu-container{
+    position:relative;
+}
+
+.menu-icon{
+    font-size:24px;
+    cursor:pointer;
+}
+
+.dropdown{
+    display:none;
+    position:absolute;
+    right:0;
+    top:35px;
+    background:white;
+    min-width:150px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.2);
+    border-radius:8px;
+}
+
+.dropdown a{
+    display:block;
+    padding:12px;
+    color:black;
+    text-decoration:none;
+}
+
+.dropdown a:hover{
+    background:#f1f3f4;
+}
+
+/* Main Section */
+.container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:100px;
+}
+
+.logo{
+    width:300px;
+    margin-bottom:30px;
+}
+
+/* Search Bar */
+.search-box{
+    width:600px;
+    height:46px;
+    border:none;
+    border-radius:25px;
+    padding:0 20px;
+    font-size:16px;
+    outline:none;
+    box-shadow:0 1px 6px rgba(32,33,36,0.28);
+}
+
+/* Buttons */
+.buttons{
+    margin-top:30px;
+}
+
+.buttons button{
+    background:#f8f9fa;
+    border:none;
+    border-radius:4px;
+    padding:10px 20px;
+    margin:0 5px;
+    cursor:pointer;
+}
+
+.buttons button:hover{
+    box-shadow:0 1px 3px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-menu">
+    <ul>
+        <li><a href="https://mail.google.com" target="_blank">Gmail</a></li>
+        <li><a href="https://images.google.com" target="_blank">Images</a></li>
+
+        <li class="menu-container">
+            <span class="menu-icon" onclick="toggleMenu()">☰</span>
+
+            <div class="dropdown" id="menuDropdown">
+                <a href="https://www.google.com">Google</a>
+                <a href="https://maps.google.com">Maps</a>
+                <a href="https://drive.google.com">Drive</a>
+                <a href="https://youtube.com">YouTube</a>
+            </div>
+        </li>
+
+        <li><button class="signin">Sign In</button></li>
+    </ul>
+</div>
+
+<div class="container">
+
+    <img src="google.jpg" alt="Google Logo" class="logo">
+
+    <input type="text" id="searchInput" class="search-box"
+    placeholder="Search Google or type a URL">
+
+    <div class="buttons">
+        <button onclick="googleSearch()">Google Search</button>
+        <button onclick="feelingLucky()">I'm Feeling Lucky</button>
+    </div>
+
+</div>
+
+<script>
+function googleSearch() {
+    let query = document.getElementById("searchInput").value;
+
+    if(query.trim() !== "") {
+        window.open(
+            "https://www.google.com/search?q=" +
+            encodeURIComponent(query),
+            "_blank"
+        );
+    }
+}
+
+function feelingLucky() {
+    let query = document.getElementById("searchInput").value;
+
+    if(query.trim() !== "") {
+        window.open(
+            "https://www.google.com/search?btnI=I&q=" +
+            encodeURIComponent(query),
+            "_blank"
+        );
+    }
+}
+
+function toggleMenu() {
+    let menu = document.getElementById("menuDropdown");
+
+    if(menu.style.display === "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
